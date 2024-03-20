@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cytono - Home</title>
+    <style>
+      body,
+      html {
+        background-color: #000000;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+        color: white;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #first {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-image: url("./0008.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+      }
+
+      .logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .logo .img {
+        height: 8vh;
+        overflow: hidden;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 768px) {
+        .logo .img {
+          height: 5vh;
+        }
+      }
+
+      .slogan {
+        color: white;
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      .title {
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .team-item {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 8vh;
+        cursor: pointer;
+      }
+
+      .team-item .info {
+        padding: 10px;
+      }
+
+      .team-item img {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 10vw;
+        height: 100%;
+        border-radius: 10%;
+        margin: 10px;
+        margin-right: 20px;
+        @media (max-width: 768px) {
+          width: 20vw;
+        }
+      }
+
+      .team-item .title {
+        font-size: calc(16px + 1vw);
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .team-item .content {
+        font-size: calc(12px + 0.5vw);
+      }
+
+      .product-card {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        padding: 3vw;
+        border-radius: 20px;
+        margin-top: 5vh;
+        border: 1px solid rgb(59, 59, 59);
+        @media (max-width: 768px) {
+          text-align: center;
+          flex-direction: column;
+        }
+      }
+
+      .product-card::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: url("0003.1.jpg");
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        opacity: 0.1;
+      }
+
+      .product-card .info {
+        padding: 10px;
+        padding-left: 3vw;
+        padding-right: 3vw;
+        .title {
+          font-size: calc(25px + 1vw);
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+
+        .content {
+          font-size: calc(12px + 0.5vw);
+          margin-top: 20px;
+        }
+      }
+
+      .product-card .product-logo {
+        opacity: 1;
+        float: right;
+        width: calc(12vw + 10vh);
+        @media (max-width: 768px) {
+          width: 50vw;
+          margin: 0 auto;
+        }
+      }
+
+      .commitee-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 5vh;
+        margin-top: 5vh;
+      }
+
+      .commitee-item {
+        width: 18vw;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 8vh;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: 768px) {
+          width: 30vw;
+          margin: 0 auto;
+        }
+      }
+
+      .commitee-item img {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        width: 6vw;
+        height: 6vw;
+        object-fit: cover;
+        border-radius: 10%;
+        margin: 10px;
+        margin-right: 20px;
+        @media (max-width: 768px) {
+          width: 24vw;
+          height: 24vw;
+        }
+      }
+
+      .commitee-item .info {
+        font-size: calc(12px + 0.5vw);
+        text-align: center;
+      }
+
+      .commitee-item .title {
+        font-size: calc(13px + 0.5vw);
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .commitee-item .content {
+        font-size: calc(14px + 0.5vw);
+      }
+
+      .commitee-item .email {
+        font-size: calc(10px + 0.5vw);
+        margin-top: 10px;
+        a {
+          color: white;
+          text-decoration: underline;
+        }
+      }
+
+      .footer {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+        padding-left: 10vw;
+        padding-right: 10vw;
+
+        margin-top: 10vh;
+
+        display: flex;
+        flex-direction: row;
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      .openings {
+        display: flex;
+        margin: 10px 0;
+        background-color: rgb(52, 83, 220);
+        font-weight: bold;
+        color: white;
+        padding: 3vh 5vw;
+        height: 5vh;
+        width: 20vw;
+        border-radius: 10px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgb(39, 72, 221);
+          cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+          width: 100%;
+        }
+      }
+
+      .about-title {
+        font-size: calc(16px + 1vw);
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .about-logo {
+        width: 30%;
+        max-width: 200px;
+        margin-right: 5vw;
+        @media (max-width: 768px) {
+          width: 60%;
+          margin-bottom: 5vh;
+        }
+      }
+
+      .about-content {
+        font-size: calc(12px + 0.5vw);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="first">
+      <div class="overlay"></div>
+      <div class="logo">
+        <img src="logo.svg" alt="Logo" class="img" />
+        <div class="slogan">
+          Build a better world with technology
+        </div>
+      </div>
+      <!-- 底部的箭头 -->
+      <div class="arrow">
+        <a href="#second">
+          <img
+            src="arrow.gif"
+            alt="Arrow"
+            style="
+              position: absolute;
+              bottom: 20px;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 50px;
+            "
+          />
+        </a>
+      </div>
+    </div>
+    <div
+      id="body"
+      style="padding-left: 10vw; padding-right: 10vw; margin-top: 5vh"
+    >
+      <div style="text-align: center; margin-top: 20vh; margin-bottom: 20vh">
+        <p
+          style="
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+          "
+        >
+          🎉
+        </p>
+        <p
+          style="
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+          "
+        >
+          XMUM Xplorer Already Launched 🚀 <br />
+          <a
+            href="https://www.xmum.app"
+            style="color: white; text-decoration: underline"
+          >
+            www.xmum.app</a
+          >
+        </p>
+      </div>
+
+      <div id="second">
+        <div>
+          <h1>Team</h1>
+
+          <div id="team-row" style="margin-top: 5vh">
+            <div id="moc" class="team-item" onclick="location.href='https://www.mocd.cc';">
+              <img src="moc.png" alt="Moc" />
+              <div class="info">
+                <div class="title">Ministry of CODE</div>
+                <div class="content">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Quos, quae. Quisquam, quos, quae. Quisquam, quos, quae.
+                </div>
+              </div>
+            </div>
+            <div id="club" class="team-item">
+              <img src="club.png" alt="Club" />
+              <div class="info">
+                <div class="title">Coding Club XMUM</div>
+                <div class="content">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Quos, quae. Quisquam, quos, quae. Quisquam, quos, quae.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="product" style="margin-top: 10vh">
+        <div>
+          <h1>Product</h1>
+
+          <div class="product-card">
+            <div class="product-logo">
+              <img
+                src="xplorer.png"
+                alt="Moc"
+                style="width: 100%; border-radius: 10%"
+              />
+            </div>
+            <div class="info">
+              <div class="title">XMUM Xplorer</div>
+              <div class="content">
+                <p style="text-align: left">
+                  A platform for XMUM students to explore and share their campus
+                  life.
+                </p>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: row;
+                    margin-top: 20px;
+                    text-align: left;
+                  "
+                >
+                  <div style="margin-right: 5vw">
+                    <div style="font-weight: bold">Features:</div>
+                  </div>
+                  <div>
+                    <ul style="line-height: 1.8">
+                      <li>Confessions</li>
+                      <li>TimeTable</li>
+                      <li>Moodle &copy; Integration</li>
+                      <li>Merchant Platform</li>
+                      <li>Second Hand Market</li>
+                      <li>Social Media</li>
+                      <li>... and more</li>
+                    </ul>
+                  </div>
+                </div>
+                <div style="margin-top: 20px; text-align: left">
+                  <div style="font-weight: bold">Launch Date: 2024-02-22</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="commitee" style="margin-top: 5vh">
+        <div>
+          <h1>Commitee</h1>
+          <div id="commitee-row" style="margin-top: 5vh">
+            <div id="commitee-president">
+              <div style="margin-bottom: 20px">
+                <h2>President</h2>
+              </div>
+              <div class="commitee-item">
+                <img src="president.png" alt="President" />
+                <div class="info">
+                  <div class="title">President</div>
+                  <div class="content">Li Jia Ke</div>
+                  <div class="email">
+                    <a href="mailto:president@cytono.com">
+                      president@cytono.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="commitee-manager">
+              <div style="margin-bottom: 20px">
+                <h2>Manager</h2>
+              </div>
+              <div class="commitee-row">
+                <div class="commitee-item">
+                  <img src="manager1.png" alt="GA Manager" />
+                  <div class="info">
+                    <div class="title">GA Manager</div>
+                    <div class="content">Seow Yu Xiang</div>
+                    <div class="email">
+                      <a href="mailto:gamanager@cytono.com">
+                        gamanager@cytono.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="commitee-item">
+                  <img src="manager2.png" alt="PD Manager" />
+                  <div class="info">
+                    <div class="title">
+                      <!-- 策划部 -->
+                      PD Manager
+                    </div>
+                    <div class="content">Li Hao Yuan</div>
+                    <div class="email">
+                      <a href="mailto:pdmanager@cytono.com">
+                        pdmanager@cytono.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="commitee-item">
+                  <img src="manager3.jpg" alt="PR Manager" />
+                  <div class="info">
+                    <div class="title">
+                      <!-- 宣传部-->
+                      PR Manager
+                    </div>
+                    <div class="content">Qi Yu Jun</div>
+                    <div class="email">
+                      <a href="mailto:prmanager@cytono.com">
+                        prmanager@cytono.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="commitee-item">
+                  <img src="manager4.png" alt="DD Manager" />
+                  <div class="info">
+                    <div class="title">DD Manager</div>
+                    <div class="content">Long Ying</div>
+                    <div class="email">
+                      <a href="mailto:ddmanager@cytono.com">
+                        ddmanager@cytono.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="commitee-item">
+                  <img src="manager5.jpg" alt="DevD Manager" />
+                  <div class="info">
+                    <div class="title">DevD Manager</div>
+                    <div class="content">Men Zhao Lin</div>
+                    <div class="email">
+                      <a href="mailto:devdmanager@cytono.com">
+                        devdmanager@cytono.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer style="background-color: #0b0b0b">
+     <div class="footer">
+      <!-- Logo -->
+      <div class="about-logo">
+        <img src="logo.svg" alt="Logo" style="width: 100%" />
+      </div>
+
+      <!-- Content -->
+      <div style="width: 70%">
+        <div
+          style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          "
+        >
+          <div>
+            <h2 class="about-title">Join Us!</h2>
+            <h4 class="about-0ontent">
+              If you think you have what it takes to be part of our team, please
+              send your resume to
+              <a
+                href="mailto:resume@cytono.com"
+                style="color: white; text-decoration: underline"
+              >
+                resume@cytono.com
+              </a>
+            </h4>
+            <div class="openings" style="margin-top: 3vh">
+              View all openings
+            </div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <hr style="border: 0.3px solid rgb(137, 137, 137); margin-top: 2vh; margin: 0 10vh" />
+
+      <div
+        style="
+          text-align: center;
+          padding-top: 5vh;
+          padding-bottom: 5vh;
+          color: white;
+        ">
+        <p>© 2024 Cytono. All rights reserved.</p>
+        </div>
+    </footer>
+  </body>
+</html>
